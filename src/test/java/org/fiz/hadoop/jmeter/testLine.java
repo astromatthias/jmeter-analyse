@@ -1,5 +1,6 @@
 package org.fiz.hadoop.jmeter;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class testLine {
@@ -17,7 +18,8 @@ public class testLine {
 		String rc = parameters[1];
 		Long ltime = new Long(time);
 		
-		System.out.println("Time " + ltime + " Retrn code " + rc);
+		Assert.assertTrue("Time ist gleich?", time.equals("127"));
+		Assert.assertTrue("RC ist gleich ?", rc.equals("201"));
 		
 		
 	}
