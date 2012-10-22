@@ -2,6 +2,7 @@ package org.fiz.hadoop.jmeter;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.FileInputFormat;
@@ -39,7 +40,7 @@ public class JMeterAnalyzer extends Configured implements Tool {
 	    conf.setMapOutputValueClass(LongWritable.class);
 
 	    conf.setOutputKeyClass(Text.class);
-	    conf.setOutputValueClass(LongWritable.class);
+	    conf.setOutputValueClass(DoubleWritable.class);
 
 	    JobClient.runJob(conf);
 	    
