@@ -5,7 +5,7 @@ package org.fiz.hadoop.jmeter;
 import java.io.IOException;
 import java.util.Iterator;
 
-import org.apache.hadoop.io.DoubleWritable;
+
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.MapReduceBase;
@@ -14,11 +14,11 @@ import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
 public class JmeterReducer extends MapReduceBase implements
-		Reducer<Text, LongWritable, Text, DoubleWritable> {
+		Reducer<Text, LongWritable, Text, Text> {
 
 	@Override
 	public void reduce(Text key, Iterator<LongWritable> values,
-			OutputCollector<Text, DoubleWritable> output, Reporter reporter)
+			OutputCollector<Text, Text> output, Reporter reporter)
 			throws IOException {
 
 		   // calculate the average of the values. 
@@ -37,7 +37,7 @@ public class JmeterReducer extends MapReduceBase implements
 			 reporter.incrCounter("General", "Total Amount", count);
 			 reporter.incrCounter("General", "Total Time", time);
 			 reporter.incrCounter("General", "Total Average", average.longValue());
-			 output.collect(key, new DoubleWritable(average));
+			 output.collect(key, new Text(average.toString() + "\t" + count + "\t" + time.toString()));
 		
 		
 		

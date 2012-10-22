@@ -9,6 +9,8 @@ import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.JobClient;
 import org.apache.hadoop.mapred.JobConf;
+import org.apache.hadoop.mapred.OutputFormat;
+import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -40,7 +42,9 @@ public class JMeterAnalyzer extends Configured implements Tool {
 	    conf.setMapOutputValueClass(LongWritable.class);
 
 	    conf.setOutputKeyClass(Text.class);
-	    conf.setOutputValueClass(DoubleWritable.class);
+	    conf.setOutputValueClass(Text.class);
+	    
+	    conf.setOutputFormat(TextOutputFormat.class);
 
 	    JobClient.runJob(conf);
 	    
