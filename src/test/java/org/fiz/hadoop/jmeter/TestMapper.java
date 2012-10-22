@@ -1,12 +1,9 @@
 package org.fiz.hadoop.jmeter;
-import static org.junit.Assert.fail;
 
-import org.apache.hadoop.io.IntWritable;
+
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mrunit.MapDriver;
-import org.apache.hadoop.mrunit.MapReduceDriver;
-import org.apache.hadoop.mrunit.ReduceDriver;
 import org.fiz.hadoop.jmeter.JmeterMapper;
 import org.junit.Before;
 import org.junit.Test;
